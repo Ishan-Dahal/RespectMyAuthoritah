@@ -17,12 +17,28 @@ class Eric(arcade.Window):
         #Eyeballs
         self.links_ball = (733, 575)
         self.rechts_ball = (783,575)
-
+        self.radius = 10
         #Mouth & Chin
         self.mouth_mid = (760,450)
         self.chin_mid = (760, 425)
         self.doublechin_mid = (760, 422)
-        self.radius = 10
+
+        #Touqe
+        self.main_part = (760, 620)
+        self.touqe_base = (760, 620)
+        
+        #Touqe Top Furs
+        self.big_long_fur = (760, 780)
+        self.vertical_fur = (753, 785)
+        self.furball_above = (780, 790)
+        self.furball_left = (735, 782)
+        self.furball_below = (770, 775)
+        self.furball_right = (790, 780)
+        #Face & Touqe Patches
+        self.below_touqe= (760, 620)
+        self.tri_right= (805, 620)#x1,y1,x2,y2,x3,y3
+        self.tri_left=()#x1,y1,x2,y2,x3,y3
+        
     def setup(self):
         arcade.set_background_color(arcade.color.BLUE_SAPPHIRE)
 
@@ -36,6 +52,16 @@ class Eric(arcade.Window):
         arcade.draw_arc_outline(*(self.doublechin_mid), 160, 35, arcade.color.BLACK, -170, -10, 3.5)
         arcade.draw_circle_filled(*(self.links_ball), self.radius, arcade.color.BLACK)
         arcade.draw_circle_filled(*(self.rechts_ball), self.radius, arcade.color.BLACK)
+        arcade.draw_arc_filled(*(self.main_part), self.head_width-15, 320, (0, 194, 216), 0,180)
+        arcade.draw_arc_filled(*(self.below_touqe), self.head_width-13.5, 90,(255, 223, 178),0, 180) #patch for face
+        arcade.draw_arc_outline(*(self.touqe_base), self.head_width, 105, arcade.color.YELLOW,8,172, 30)
+        arcade.draw_ellipse_filled(*(self.big_long_fur), 90, 22, arcade.color.YELLOW)
+        arcade.draw_ellipse_filled(*(self.vertical_fur), 40, 30, arcade.color.YELLOW, tilt_angle=-60)
+        arcade.draw_circle_filled(*(self.furball_above), 12, arcade.color.YELLOW)
+        arcade.draw_circle_filled(*(self.furball_left), 13, arcade.color.YELLOW)
+        arcade.draw_circle_filled(*(self.furball_below), 10, arcade.color.YELLOW)
+        arcade.draw_circle_filled(*(self.furball_right), 12, arcade.color.YELLOW)
+        #arcade.draw_triangle_filled()
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ESCAPE:
