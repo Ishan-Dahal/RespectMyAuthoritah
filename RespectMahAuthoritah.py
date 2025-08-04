@@ -38,12 +38,30 @@ class Eric(arcade.Window):
         self.below_touqe= (760, 620)
         self.tri_right= (955, 620, 960, 650, 985, 620)#x1,y1,x2,y2,x3,y3
         self.tri_left=(565, 620, 560, 650, 535, 620)#x1,y1,x2,y2,x3,y3
+
+        """--------------------------------------------------------------------"""
+
+        #Body and Patches
+        self.body = (760, 350)
+        self.left_foot = (642.5, 100)
+        self.right_foot = (867.5,100)
         
     def setup(self):
         arcade.set_background_color(arcade.color.BLUE_SAPPHIRE)
 
     def on_draw(self):
         self.clear()
+        arcade.draw_lbwh_rectangle_filled(530,100, 450, 200, (166, 47, 13)) #Pants
+        arcade.draw_triangle_filled(530,100, 530,220, 500,220,(166, 47, 13)) #Left pant angled patch
+        arcade.draw_triangle_filled(980,100, 980,220, 1010,220,(166, 47, 13)) #Right pant angled patch
+        arcade.draw_ellipse_filled(*(self.body),600, 420, arcade.color.RED) #Body
+        arcade.draw_arc_filled (995, 280, 200, 100, arcade.color.RED, 20, 120, 120) #R_Shirt_patch
+        arcade.draw_arc_filled (540, 250, 200, 100, arcade.color.RED, 20, 120, 230) #L_Shirt_patch
+        arcade.draw_arc_filled(1080, 300, 300, 100, arcade.color.BLUE_SAPPHIRE, 0, 180, 270) #R_Shirt_Cut
+        arcade.draw_lbwh_rectangle_filled(530, 140, 450, 60, (166, 47, 13)) #Pant_Mid_Patch
+        arcade.draw_arc_filled(*(self.left_foot), 250, 60, arcade.color. BLACK, 0, 180) #LFoot
+        arcade.draw_arc_filled(*(self.right_foot), 250, 60, arcade.color. BLACK, 0, 180)#RFoot
+        """---------------------------------------------------------------------------------------------------------"""
         arcade.draw_ellipse_filled(*self.head_center, self.head_width, self.head_height, (255, 223, 178))
         arcade.draw_ellipse_filled(*(self.links), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= -60)
         arcade.draw_ellipse_filled(*(self.rechts), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= 60)
@@ -63,6 +81,7 @@ class Eric(arcade.Window):
         arcade.draw_circle_filled(*(self.furball_right), 12, arcade.color.YELLOW)
         arcade.draw_triangle_filled(*(self.tri_right), arcade. color. BLUE_SAPPHIRE)
         arcade.draw_triangle_filled(*(self.tri_left), arcade. color. BLUE_SAPPHIRE)
+        
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ESCAPE:
