@@ -36,8 +36,8 @@ class Eric(arcade.Window):
         self.furball_right = (790, 780)
         #Face & Touqe Patches
         self.below_touqe= (760, 620)
-        self.tri_right= (805, 620)#x1,y1,x2,y2,x3,y3
-        self.tri_left=()#x1,y1,x2,y2,x3,y3
+        self.tri_right= (955, 620, 960, 650, 985, 620)#x1,y1,x2,y2,x3,y3
+        self.tri_left=(565, 620, 560, 650, 535, 620)#x1,y1,x2,y2,x3,y3
         
     def setup(self):
         arcade.set_background_color(arcade.color.BLUE_SAPPHIRE)
@@ -61,7 +61,8 @@ class Eric(arcade.Window):
         arcade.draw_circle_filled(*(self.furball_left), 13, arcade.color.YELLOW)
         arcade.draw_circle_filled(*(self.furball_below), 10, arcade.color.YELLOW)
         arcade.draw_circle_filled(*(self.furball_right), 12, arcade.color.YELLOW)
-        #arcade.draw_triangle_filled()
+        arcade.draw_triangle_filled(*(self.tri_right), arcade. color. BLUE_SAPPHIRE)
+        arcade.draw_triangle_filled(*(self.tri_left), arcade. color. BLUE_SAPPHIRE)
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ESCAPE:
