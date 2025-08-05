@@ -45,6 +45,8 @@ class Eric(arcade.Window):
         self.body = (760, 350)
         self.left_foot = (642.5, 100)
         self.right_foot = (867.5,100)
+        self.r_hand = (1040, 320)
+        self.l_hand = (500,320)
         
     def setup(self):
         arcade.set_background_color(arcade.color.BLUE_SAPPHIRE)
@@ -61,6 +63,14 @@ class Eric(arcade.Window):
         arcade.draw_lbwh_rectangle_filled(530, 140, 450, 60, (166, 47, 13)) #Pant_Mid_Patch
         arcade.draw_arc_filled(*(self.left_foot), 250, 60, arcade.color. BLACK, 0, 180) #LFoot
         arcade.draw_arc_filled(*(self.right_foot), 250, 60, arcade.color. BLACK, 0, 180)#RFoot
+        arcade.draw_arc_filled(608, 190, 200, 50, (166, 47, 13), 0, 180)#shirt shape bottom left
+        arcade.draw_triangle_filled(504, 201, 490, 250, 525, 203, arcade.color.RED)#Left pant shirt blend
+        arcade.draw_circle_filled(980, 192, 10, (166, 47, 13)) #pant patch smallest
+        arcade.draw_arc_filled(900, 200, 160, 10, (166, 47, 13), 0 , 180) #Bottom right shirt blend
+        arcade.draw_triangle_filled(1020, 320, 1044, 420, 1070, 320, arcade.color.RED)#right sleeve
+        arcade. draw_circle_filled(*(self.r_hand), 50, arcade.color.YELLOW) #right hand
+        arcade.draw_ellipse_filled(*(self.l_hand), 108, 100, arcade.color.YELLOW, 60)#left hand
+        
         """---------------------------------------------------------------------------------------------------------"""
         arcade.draw_ellipse_filled(*self.head_center, self.head_width, self.head_height, (255, 223, 178))
         arcade.draw_ellipse_filled(*(self.links), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= -60)
