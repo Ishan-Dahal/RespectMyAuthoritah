@@ -69,7 +69,14 @@ class Eric(arcade.Window):
         arcade.draw_arc_filled(900, 200, 160, 10, (166, 47, 13), 0 , 180) #Bottom right shirt blend
         arcade.draw_triangle_filled(1020, 320, 1044, 420, 1070, 320, arcade.color.RED)#right sleeve
         arcade. draw_circle_filled(*(self.r_hand), 50, arcade.color.YELLOW) #right hand
+        arcade.draw_ellipse_filled(985, 320, 50, 20, arcade.color.YELLOW, 315)#Right finger
         arcade.draw_ellipse_filled(*(self.l_hand), 108, 100, arcade.color.YELLOW, 60)#left hand
+        arcade.draw_triangle_filled(535,310, 585, 290, 532, 360, arcade.color.YELLOW)
+        arcade.draw_ellipse_filled(535, 310, 80, 15, arcade.color.YELLOW, 200)
+        arcade.draw_ellipse_filled(540, 342, 80, 15, arcade.color.YELLOW, 45)
+        arcade.draw_circle_filled(562,307, 12, arcade.color.YELLOW)
+        arcade.draw_ellipse_filled(580,295,15,18,arcade.color.RED, 0)# Left hand ends
+        
         
         """---------------------------------------------------------------------------------------------------------"""
         arcade.draw_ellipse_filled(*self.head_center, self.head_width, self.head_height, (255, 223, 178))
