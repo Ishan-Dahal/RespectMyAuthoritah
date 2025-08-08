@@ -1,5 +1,5 @@
 import arcade
-
+#All the Lefts and Rights are from my perspective
 class Eric(arcade.Window):
     def __init__(self):
         super().__init__(1280, 720, "Respect Mah Authoritahhhh", fullscreen= True)
@@ -9,14 +9,14 @@ class Eric(arcade.Window):
         self.head_width = 400
 
         #Eye
-        self.links = (720,575)
-        self.rechts = (795,575)
-        self.i_width = 90
-        self.i_height = 70
+        self.links = (701,575)
+        self.rechts = (814,575)
+        self.i_width = 135
+        self.i_height = 105
 
         #Eyeballs
-        self.links_ball = (733, 575)
-        self.rechts_ball = (783,575)
+        self.links_ball = (721.5, 575)
+        self.rechts_ball = (795.5,575)
         self.radius = 10
         #Mouth & Chin
         self.mouth_mid = (760,450)
@@ -65,11 +65,15 @@ class Eric(arcade.Window):
         arcade.draw_arc_filled(*(self.right_foot), 250, 60, arcade.color. BLACK, 0, 180)#RFoot
         arcade.draw_arc_filled(608, 190, 200, 50, (166, 47, 13), 0, 180)#shirt shape bottom left
         arcade.draw_triangle_filled(504, 201, 490, 250, 525, 203, arcade.color.RED)#Left pant shirt blend
+        # Line and buttons goes here
         arcade.draw_circle_filled(980, 192, 10, (166, 47, 13)) #pant patch smallest
         arcade.draw_arc_filled(900, 200, 160, 10, (166, 47, 13), 0 , 180) #Bottom right shirt blend
         arcade.draw_triangle_filled(1020, 320, 1044, 420, 1070, 320, arcade.color.RED)#right sleeve
         arcade. draw_circle_filled(*(self.r_hand), 50, arcade.color.YELLOW) #right hand
         arcade.draw_ellipse_filled(985, 320, 50, 20, arcade.color.YELLOW, 315)#Right finger
+        arcade.draw_triangle_filled(1015, 364, 980, 330, 1040, 320, arcade.color.YELLOW)
+        arcade.draw_triangle_filled(1015, 310, 980, 305, 1010, 330, arcade.color.YELLOW)
+        arcade.draw_arc_filled(992, 340, 40, 5, arcade.color.YELLOW, 0, 180, tilt_angle= 315) #Right hand ends
         arcade.draw_ellipse_filled(*(self.l_hand), 108, 100, arcade.color.YELLOW, 60)#left hand
         arcade.draw_triangle_filled(535,310, 585, 290, 532, 360, arcade.color.YELLOW)
         arcade.draw_ellipse_filled(535, 310, 80, 15, arcade.color.YELLOW, 200)
@@ -80,13 +84,9 @@ class Eric(arcade.Window):
         
         """---------------------------------------------------------------------------------------------------------"""
         arcade.draw_ellipse_filled(*self.head_center, self.head_width, self.head_height, (255, 223, 178))
-        arcade.draw_ellipse_filled(*(self.links), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= -60)
-        arcade.draw_ellipse_filled(*(self.rechts), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= 60)
         arcade.draw_arc_outline(*(self.mouth_mid), 60, 15, arcade.color.BLACK, 0, 180, 10)
         arcade.draw_arc_outline(*(self.chin_mid), 85, 15, arcade.color.BLACK, -180, 0, 5)
         arcade.draw_arc_outline(*(self.doublechin_mid), 160, 35, arcade.color.BLACK, -170, -10, 3.5)
-        arcade.draw_circle_filled(*(self.links_ball), self.radius, arcade.color.BLACK)
-        arcade.draw_circle_filled(*(self.rechts_ball), self.radius, arcade.color.BLACK)
         arcade.draw_arc_filled(*(self.main_part), self.head_width-15, 320, (0, 194, 216), 0,180)
         arcade.draw_arc_filled(*(self.below_touqe), self.head_width-13.5, 90,(255, 223, 178),0, 180) #patch for face
         arcade.draw_arc_outline(*(self.touqe_base), self.head_width, 105, arcade.color.YELLOW,8,172, 30)
@@ -98,6 +98,10 @@ class Eric(arcade.Window):
         arcade.draw_circle_filled(*(self.furball_right), 12, arcade.color.YELLOW)
         arcade.draw_triangle_filled(*(self.tri_right), arcade. color. BLUE_SAPPHIRE)
         arcade.draw_triangle_filled(*(self.tri_left), arcade. color. BLUE_SAPPHIRE)
+        arcade.draw_ellipse_filled(*(self.links), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= -60)
+        arcade.draw_ellipse_filled(*(self.rechts), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= 60)
+        arcade.draw_circle_filled(*(self.links_ball), self.radius, arcade.color.BLACK)
+        arcade.draw_circle_filled(*(self.rechts_ball), self.radius, arcade.color.BLACK)
         
 
     def on_key_press(self, symbol, modifiers):
