@@ -65,7 +65,10 @@ class Eric(arcade.Window):
         arcade.draw_arc_filled(*(self.right_foot), 250, 60, arcade.color. BLACK, 0, 180)#RFoot
         arcade.draw_arc_filled(608, 190, 200, 50, (166, 47, 13), 0, 180)#shirt shape bottom left
         arcade.draw_triangle_filled(504, 201, 490, 250, 525, 203, arcade.color.RED)#Left pant shirt blend
-        # Line and buttons goes here
+        arcade.draw_line(750, 600, 760,290, arcade.color.BLACK, 3)#shirt line above
+        arcade.draw_line(760, 290, 750, 199, arcade.color.BLACK, 3) #shirt line below
+        arcade.draw_ellipse_filled(735, 350, 10, 15, arcade.color.BLACK)
+        arcade.draw_ellipse_filled(735, 250, 10, 15, arcade.color.BLACK)
         arcade.draw_circle_filled(980, 192, 10, (166, 47, 13)) #pant patch smallest
         arcade.draw_arc_filled(900, 200, 160, 10, (166, 47, 13), 0 , 180) #Bottom right shirt blend
         arcade.draw_triangle_filled(1020, 320, 1044, 420, 1070, 320, arcade.color.RED)#right sleeve
