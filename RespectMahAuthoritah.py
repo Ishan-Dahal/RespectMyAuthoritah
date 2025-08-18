@@ -20,6 +20,7 @@ class Eric(arcade.Window):
         self.radius = 10
         #Mouth & Chin
         self.mouth_mid = (760,450)
+        self.open_mouth_mid = (760, 454)
         self.chin_mid = (760, 425)
         self.doublechin_mid = (760, 422)
 
@@ -47,9 +48,48 @@ class Eric(arcade.Window):
         self.right_foot = (867.5,100)
         self.r_hand = (1040, 320)
         self.l_hand = (500,320)
-        
+        self.set_mouse_visible(False)  #Hide cursor
+        self.total_time = 0
+        self.start_delay = 1
+        self.visibility = False #For expressions
+
+    
     def setup(self):
         arcade.set_background_color(arcade.color.BLUE_SAPPHIRE)
+
+    def on_update(self, delta_time):
+        self.total_time += delta_time
+
+    def on_mouse_motion(self, x, y, dx, dy):
+        if self.total_time < self.start_delay:
+            return
+        lx,ly = self.links
+        rx,ry = self.rechts
+        max_move_x = 55
+        max_move_y = 80
+        def limiter(diff, min_diff, max_diff):
+            if diff < min_diff:
+                return min_diff
+            elif diff > max_diff:
+                return max_diff
+            else:
+                return diff
+        
+        l_change_x = limiter((x-lx)/30, -max_move_x, max_move_x)
+        l_change_y= limiter((y-ly)/30, -max_move_y, max_move_y)
+        self.links_ball = (lx + l_change_x, ly+ l_change_y)
+        r_change_x = limiter((x-rx)/30, -max_move_x, max_move_x)
+        r_change_y = limiter((y-ry)/30, -max_move_y, max_move_y)
+        self.rechts_ball = (rx + r_change_x, ry+ r_change_y)
+
+        if y > 720:
+            self.visibility = True
+            return self.visibility
+        else:
+            self.visibility = False
+
+
+        
 
     def on_draw(self):
         self.clear()
@@ -105,6 +145,10 @@ class Eric(arcade.Window):
         arcade.draw_ellipse_filled(*(self.rechts), self.i_width, self.i_height, arcade.color.WHITE, tilt_angle= 60)
         arcade.draw_circle_filled(*(self.links_ball), self.radius, arcade.color.BLACK)
         arcade.draw_circle_filled(*(self.rechts_ball), self.radius, arcade.color.BLACK)
+        if self.visibility == True:
+            arcade.draw_ellipse_filled(*(self.open_mouth_mid), 65, 30, arcade.color.BLACK)
+            arcade.draw_polygon_filled([[740, 675], [737, 678], [635, 638], [650, 632]], arcade.color.BLACK)#Left Eyebrow
+            arcade.draw_polygon_filled([[885, 638], [870, 632], [783, 678], [780, 675]], arcade.color.BLACK)#Right Eyebrow
         
 
     def on_key_press(self, symbol, modifiers):
