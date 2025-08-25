@@ -8,5 +8,13 @@ If Python and Arcade library are not installed, install them first.
 To install Arcade after installing python:
 ```bash
 pip install arcade
+```
 Then,
-Run RespectMyAuthoritah.py 
+Run RespectMyAuthoritah.py,
+Move your mouse around,
+See the magic
+# Limitations
+If your screen resolution is lower than 1920 x 1200, Some parts of the art/ animation may not be visible
+
+# Exiting fullscreen
+Press 'Esc' to exit full-screen
